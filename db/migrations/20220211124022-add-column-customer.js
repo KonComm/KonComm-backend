@@ -4,7 +4,6 @@ module.exports = {
       await queryInterface.addColumn("customers", "role", {
         type: Sequelize.ENUM,
         values: ["0", "1"],
-        comment: "0 (ecomm), 1 (salon)",
         defaultValue: "0",
         after: "email",
       });

@@ -4,7 +4,6 @@ module.exports = {
       await queryInterface.addColumn("BannerDetails", "type", {
         type: Sequelize.ENUM,
         values: ["0", "1"],
-        comment: "0 (laptop), 1 (mobile)",
         after: "status",
       });
       return Promise.resolve();
