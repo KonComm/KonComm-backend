@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Cart_Detail = sequelize.define('Cart_Detail', {
-    orderId: DataTypes.STRING,
+    orderId: DataTypes.INTEGER,
     // custId: DataTypes.INTEGER,
     addressId: DataTypes.INTEGER,
     productId: DataTypes.INTEGER,
