@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     PubilshStatus: {
       type: DataTypes.ENUM('Pending','Processing','Unpublished', 'Published'),
       allowNull: false,
-      defaultValue: 'pending'
+      defaultValue: 'Pending'
     },
     ShippingDays: DataTypes.STRING,
     HighLightDetail: DataTypes.JSON,
