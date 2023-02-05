@@ -4,6 +4,7 @@ import { findVendorWithLowestPrice } from '../../../utils';
 var Util = require("../../../helpers/Util");
 var Sequelize = require("sequelize");
 const { Op } = require("sequelize");
+const moment = require('moment')
 
 var findProductList = (array) => {
     return new Promise((resolve, reject) => {
@@ -319,9 +320,8 @@ export default {
         }
     },
     async getOrderNotifications(req, res, next) {
-        const TODAY_START = new Date().setHours(0, 0, 0, 0);
-        const tomorrow = new Date(TODAY_START)
-        tomorrow.setDate(tomorrow.getDate() + 1)
+        const TODAY_START = moment().startOf('day').toISOString();
+        const tomorrow = moment().add(1, 'day').startOf('day').toISOString();
 
         try {
             db.OrderNotification.findAll({
@@ -337,7 +337,7 @@ export default {
                         model: db.Cart_Detail, attributes: ["id", "productId"], as: "details",
                         include: [{
                             model: db.product, as: "product_detail",
-                            include: [{ model: db.productphoto, attributes: ["imgurl"] }]
+                            include: [{ model: db.productphoto, attributes: ["imgUrl"] }]
                         }]
                     }
                 ],
